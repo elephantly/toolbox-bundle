@@ -1,0 +1,19 @@
+{
+    "name": "tiriel/toolbox-bundle",
+    "description": "Small toolbox with basic bricks and helpers for PHP/Symfony",
+    "autoload": {
+        "psr-0": {
+            "Tiriel\\Toolbox": "src"
+        }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tiriel"
+        }
+    ],
+    "require": {
+        "php": "^5.4",
+        "symfony/framework-bundle": "^2.8"
+    }
+}
