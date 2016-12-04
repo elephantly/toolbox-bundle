@@ -8,7 +8,7 @@
 
 namespace Toolbox\EntityInterface;
 
-interface Entity
+interface EntityInterface
 {
     /**
      * Returns the main identifier for each instance by calling get{Identifier}()

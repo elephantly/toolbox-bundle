@@ -8,21 +8,8 @@
 
 namespace Toolbox\EntityInterface;
 
-interface Entity
+interface EntityNameInterface extends EntityInterface
 {
-    /**
-     * Returns the main identifier for each instance by calling get{Identifier}()
-     * Useful to typehint entities and retrieve their identifier whether it's and in attribute or anything fancier.
-     * Example:
-     * public function returnIdentifier()
-     * {
-     *      return $this->getId();
-     * }
-     *
-     * @return string|integer
-     */
-    public function returnIdentifier();
-
     /**
      * Returns the entity Class Name
      * @return string
