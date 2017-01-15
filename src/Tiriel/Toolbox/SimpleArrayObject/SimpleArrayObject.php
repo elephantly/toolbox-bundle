@@ -85,9 +85,9 @@ class SimpleArrayObject
      * @param $element
      * @return $this
      */
-    public function pushElement($element)
+    public function unshiftElement($element)
     {
-        array_push($this->_array, $element);
+        array_unshift($this->_array, $element);
 
         return $this;
     }
