@@ -8,21 +8,21 @@
 
 namespace Toolbox\SimpleArrayObject;
 
-
 /**
  * Class SimpleArrayObject
  * @package Toolbox\SimpleArrayObject
  */
-/**
- * Class SimpleArrayObject
- * @package Toolbox\SimpleArrayObject
- */
-class SimpleArrayObject
+class SimpleArrayObject implements \Iterator
 {
     /**
      * @var array
      */
-    private $_array;
+    protected $_array;
+
+    /**
+     * @var int
+     */
+    protected $_position;
 
     /**
      * SimpleArrayObject constructor.
@@ -30,7 +30,8 @@ class SimpleArrayObject
      */
     public function __construct(array $args = array())
     {
-        $this->_array = $args;
+        $this->_array    = $args;
+        $this->_position = 0;
     }
 
     /**
@@ -42,11 +43,28 @@ class SimpleArrayObject
     }
 
     /**
+     * @return bool
+     */
+    public function valid()
+    {
+        return $this->keyExists($this->_position);
+    }
+
+    /**
      * @return mixed
      */
     public function first()
     {
+        $this->_position = 0;
         return reset($this->_array);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function rewind()
+    {
+        return $this->first();
     }
 
     /**
@@ -54,7 +72,7 @@ class SimpleArrayObject
      */
     public function current()
     {
-        return current($this->_array);
+        return $this->_array[$this->_position];
     }
 
     /**
@@ -62,7 +80,7 @@ class SimpleArrayObject
      */
     public function key()
     {
-        return key($this->_array);
+        return $this->_position;
     }
 
     /**
@@ -70,7 +88,8 @@ class SimpleArrayObject
      */
     public function next()
     {
-        return next($this->_array);
+        $this->_position++;
+        return $this->_array[$this->_position];
     }
 
     /**
@@ -78,7 +97,8 @@ class SimpleArrayObject
      */
     public function last()
     {
-        return end($this->_array);
+        $this->_position = $this->count() -1;
+        return $this->_array[$this->_position];
     }
 
     /**
@@ -236,7 +256,8 @@ class SimpleArrayObject
      */
     public function clear()
     {
-        $this->_array = array();
+        $this->_position = 0;
+        $this->_array    = array();
 
         return $this;
     }
